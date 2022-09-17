@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+}
+
+header {
+    margin-bottom: 20px;
+    background-color: #0497aa;
+    padding: 2vh;
+    color: white;
+}
+
+#top-menu>ul {
+    list-style-type: none;
+    overflow: hidden;
+    background-color: #333;
+    top: 0;
+    width: 100%;
+    padding-inline-start: 0;
+}
+
+#top-menu li {
+    float: left;
+}
+
+#top-menu li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#top-menu li a:hover:not(.active) {
+    background-color: #0497aa;
+    transition: all 1s ease-in-out;
+}
+
+.active {
+    background-color: #0497aa;
+}
+
+@media screen and (max-width: 400px) {
+    #top-menu li {
+        float: none;
+    }
+}
