@@ -9,17 +9,23 @@ header {
     color: white;
 }
 
+h1, h2, h3, h4, p, .links {
+    margin: 2vw;
+}
+
 #top-menu>ul {
     list-style-type: none;
     overflow: hidden;
-    background-color: #333;
+    background-color: rgb(45, 45, 45);
     top: 0;
     width: 100%;
     padding-inline-start: 0;
+    border-right: solid 1px rgb(43, 43, 43);
 }
 
 #top-menu li {
     float: left;
+    border: solid 1px rgb(43, 43, 43);
 }
 
 #top-menu li a {
@@ -37,6 +43,18 @@ header {
 
 .active {
     background-color: #0497aa;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 2vh;
+    background-color: #0497aa;
+}
+
+footer > p {
+    color: aliceblue;
 }
 
 @media screen and (max-width: 400px) {
