@@ -4,7 +4,7 @@ Här ligger två varianter, en enkel och en mer intressant
 
 ## Filen easier.js
 
-Några frågo att reflektera över.
+Några frågor att reflektera över.
 
 1. Varför stannar programmet när man trycker på avbryt i popup:en?
 2. Hur fungerar funktionen getRndDamage(), och vad betyder return?
@@ -13,9 +13,8 @@ Några frågo att reflektera över.
 
 
 ## Filen moderate.js
-OBS! Det är ett ganska stort exempel, som inte förväntas av den studerande att redan första veckan producera alla detaljer kring.
 
-Din lösning kan absoulut vara mindre avancerad än denna. Några frågor att reflektera över:
+Din lösning kan absoulut vara mindre avancerad än denna, och ändå vara fullt acceptabel. Versionen ska ses som fördjupning. Några frågor att reflektera över:
 
 1. Varför loopar spelet tills användaren inte vill det längre?
 2. Vad är det som räknar upp antalet gånger någon spelat?
