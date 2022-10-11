@@ -1,7 +1,5 @@
 let runProgram = confirm("Welcome to the magic world of Utopia!\nDo you want to play?");
 
-// här startar själva spelet, med en global iteration,
-// som blir false först om spelaren så väljer; efter genomfört spel
 while(runProgram) {
     // Två objekt
     const ladyBianca = {

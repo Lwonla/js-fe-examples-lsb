@@ -1,10 +1,21 @@
 # Variabler, iterationer, objekt och funktioner
 
+Här ligger två varianter, en enkel och en mer intressant
+
+## Filen easier.js
+
+Några frågo att reflektera över.
+
+1. Varför stannar programmet när man trycker på avbryt i popup:en?
+2. Hur fungerar funktionen getRndDamage(), och vad betyder return?
+3. Vad gör att else på rad 54 går igång, om den går igång?
+4. showCharacterStatus() skickar med antingen "ladyBianca" eller "birdMonster". Men i själva funktionen finns inget av de namnen, utan där står det "character". Förklara vad som händer.
+
+
+## Filen moderate.js
 OBS! Det är ett ganska stort exempel, som inte förväntas av den studerande att redan första veckan producera alla detaljer kring.
 
-Din lösning tillåts absoulut vara mindre avancerad (se uppgiftinstruktioner). Det viktiga är att du försökt, och att du jämför denna lösning, rad för rad, med den egna lösningen.
-
-Några frågor att reflektera över:
+Din lösning kan absoulut vara mindre avancerad än denna. Några frågor att reflektera över:
 
 1. Varför loopar spelet tills användaren inte vill det längre?
 2. Vad är det som räknar upp antalet gånger någon spelat?
