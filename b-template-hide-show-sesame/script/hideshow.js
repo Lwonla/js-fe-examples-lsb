@@ -11,17 +11,16 @@ const btn = document.querySelector('.btn-sesame');
 const hiddenContent = document.querySelector('.hidden-content');
 
 function ShowText() {
-    if(hiddenContent.classList.contains('btn-sesame')){
+    if (hiddenContent.classList.contains('btn-sesame')){
         hiddenContent.classList.remove('btn-sesame');
         btn.innerHTML = "Open, Sesame!";
-        btn.style.backgroundColor ="rgb(0 ,0,0)"
+        btn.style.color ="rgb(0 ,0,0)"
     }
     else{
         hiddenContent.classList.add('btn-sesame');
         btn.innerHTML = "Shut, Sesame!";
-       btn.style.backgroundColor = "red";
-
+        btn.style.backgroundColor = "red";
     }
 }
 
-btn.addEventListener('click', ShowText);
+btn.addEventListener('mouseover', ShowText);
