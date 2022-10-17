@@ -1,17 +1,18 @@
-/*  DOM Manipulation
-    --------------------------
-    1. getElementById()
-    2. getElementsByClassName()
-    3. getElementByTagName()
-    4. querySelector()
-    5. querySelectorAll()
+let ul = document.querySelector('ul')
+let div = document.querySelectorAll('div')
+//let ul = document.querySelector('ul');
+// console.log(ul.parentNode.parentNode);
+//console.log(ul.parentElement.parentElement);
+//const html = document.documentElement;
+//console.log(html.parentNode);
+//console.log(html.parentElement);
+// ul.childNodes[3].style.backgroundColor ="red";
+//console.log(ul.firstElementChild)
+//console.log(ul.lastElementChild)
 
-
-    Navigera i DOM
-    --------------------------
-    6. Föräldranoder (parentNode, parentElement)
-    7. Barnnoder (children, childNode, first[] last[] Child/ElementChild)
-    8. Syskonnoder (previous[] next[] Sibling ElementSibling)
+/*console.log(ul.previousElementSibling)
+console.log(ul.nextElementSibling)
+console.log(div.childNodes)
+console.log(ul.previousSibling)
+console.log(ul.nextSibling)
 */
-
-
