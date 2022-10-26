@@ -6,13 +6,14 @@ let data1 = fetch(url1)
   .then((response) => response.json())
   .then((json) => console.log(json));
 
+
 const url2 = "https://jsonplaceholder.typicode.com/posts";
 
 let data2 = fetch(url2)
   .then((response) => response.json())
   .then((json) => console.log(json));
 
-let data3 = fetch(url2)
+    let data3 = fetch(url2)
   .then((response) => response.json())
   .then((json) => {
     json.forEach(element => {
@@ -20,10 +21,11 @@ let data3 = fetch(url2)
     });
   });
 
+
 fetch("https://jsonplaceholder.typicode.com/posts", {
   method: "POST",
   body: JSON.stringify({
-    title: "Testing to post a title",
+    title: "Testing to post a title !!!",
     body: "Testing to post a message",
     userId: 1,
   }),
@@ -48,4 +50,3 @@ fetch("https://jsonplaceholder.typicode.com/posts/1", {
 })
   .then((response) => response.json())
   .then((json) => console.log(json));
-
