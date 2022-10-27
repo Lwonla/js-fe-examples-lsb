@@ -1,6 +1,7 @@
+
+// skapa ett objekt, konvertera till JSON, lagra det hela i localstorage
 function store() {
     let brand = document.getElementById('carBrand').value;
-    console.log(brand);
     let price = document.getElementById('carPrice').value;
     let key = document.getElementById('key').value;
 
@@ -11,31 +12,31 @@ function store() {
     localStorage.setItem(key, JSON.stringify(car));
 }
 
-function retrieveRecords() {
+// ta in datan till objektet från användaren, visa datan på skärmen
+function retriveRecords() {
     let key = document.getElementById('retrieveKey').value;
-    console.log(key);
     let records = localStorage.getItem(key);
     let paragraph = document.createElement('p');
     let info = document.createTextNode(records);
     paragraph.appendChild(info);
-    let element = document.getElementById("retrieve");
+    let element = document.getElementById('retrieve');
     element.appendChild(paragraph);
 }
-
+// ta bort datan via nyckeln (id)
 function removeItem() {
     let key = document.getElementById('removeKey').value;
     localStorage.removeItem(key);
-    console.log("Item with key: ${key} removed");
 }
 
+// ta bort all data via clear
 function clearStorage() {
     localStorage.clear();
-    console.log("All items removed");
 }
 
+// fixa knappar
 window.onload = function () {
-    document.getElementById("carForm").onsubmit = store;
-    document.getElementById("retrieveButton").onclick = retrieveRecords;
-    document.getElementById('removeButton').onclick = removeItem;
+    document.getElementById('carForm').onsubmit = store;
+    document.getElementById('retrieveButton').onclick = retriveRecords;
     document.getElementById('clearButton').onclick = clearStorage;
+    document.getElementById('removeButton').onclick = removeItem;
 }
