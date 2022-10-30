@@ -1,5 +1,8 @@
-// Exmplet använder https://jsonplaceholder.typicode.com/ 
-
+/*  Exmplet använder https://jsonplaceholder.typicode.com/ 
+   
+    Uddatering v. 2.0
+    Ett tillagt exempel: en JSON-array med två objekt, från rad 78
+*/
 
 // först: att hämta (GET) en post, och visa med console.log()
 const urlOnePost = "https://jsonplaceholder.typicode.com/posts/1";

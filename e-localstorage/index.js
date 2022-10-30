@@ -8,6 +8,8 @@ function store() {
     const car = {
         brand: brand,
         price: price,
+        color: color,
+        owner: owner,
     }
     localStorage.setItem(key, JSON.stringify(car));
 }
