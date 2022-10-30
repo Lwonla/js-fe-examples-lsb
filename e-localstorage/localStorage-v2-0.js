@@ -1,6 +1,5 @@
 // localStorage sparar i värdeparet key/value enligt localStorage("key", "value")
 
-let id = 0;
 let showCarObjects = document.getElementById('showCars');
 let showCar = document.getElementById('showCar');
 
@@ -16,25 +15,28 @@ function store() {
         price: price,
         color: color,
     }
-    id = localStorage.length + 1;
-    localStorage.setItem(id, JSON.stringify(car));
-    showCarObjects.innerHTML = this.brand + " is stored.";
+   
+    localStorage.setItem(uniqueId(), JSON.stringify(car));
+}
+
+function uniqueId(){
+    const id = Math.random().toString(36).substr(2, 9);
+    return id;
 }
 
 // showListOfItem(): efterfrågad funktion för att visa en lista med 
-// sparade objekt, annars visas ett meddelande om att localStorage är tomt
+// sparade loopade objekt, annars visas ett meddelande om att localStorage är tomt
 function showListOfItem() {
     let carId;
-    showCarObjects.innerText = "";
     if (localStorage.length !== 0) {
-        for (let i = 1; i <= localStorage.length; i++) {
-            carId = localStorage.getItem(i);
+        Object.keys(localStorage).forEach(function (key) {
+            carId = localStorage.getItem(key);
             let p = document.createElement('p');
             let carObjekt = document.createTextNode(carId);
             p.appendChild(carObjekt);
             showCarObjects = document.getElementById('showCars');
             showCarObjects.appendChild(p);
-        }
+        });
     }
     else {
         showCarObjects.style.color = "red";
@@ -57,64 +59,63 @@ function closeList() {
 // när listan är färdigloopad och är 0 om inget namn hittats)
 function retriveCarName() {
     let carBrandName = document.getElementById('retrieveKey').value;
-    let carId, carValues;
-    let carMatchingCount = 0;
+    let carId;
+    let carMatchingCount, i = 0;
     let carObjekt;
-    
+
     if (carBrandName === null || carBrandName === "") {
         showCar.style.color = "red";
         showCar.innerHTML = "Please enter a car brand name";
     }
     else {
-        showCar.innerText = "";
-        for (let i = 0; i < localStorage.length; i++) {
-            carId = localStorage.key(i);
-            carValues = localStorage.getItem(carId);
-            carObjekt = JSON.parse(carValues); // här görs stringen om tillbaka till objekt
-            
-            if (carObjekt.brand === carBrandName) {
+        Object.keys(localStorage).forEach(function (key) {
+            carId = localStorage.getItem(key);
+            carObjekt = JSON.parse(carId); // här görs stringen om tillbaka till objekt
+            if (carObjekt.brandName === carBrandName) {
                 let p = document.createElement('p');
-                let car = document.createTextNode(carObjekt.brand + " has the key: " + carId);
+                let car = document.createTextNode(carObjekt.brandName + " has the key: " + key);
                 p.appendChild(car);
                 showCar.style.color = "black";
                 showCar.appendChild(p);
                 carMatchingCount++;
             }
-
-            else if (i + 1 === localStorage.length && carMatchingCount === 0) {
+            else if (carMatchingCount === 0) {
                 showCar.style.color = "red";
                 showCar.innerText = "No such car brand name exists, please check spelling. "
             }
-            console.log(localStorage.length);
-        }
+        });
     }
-
 }
 
 // removeItem(): fungerar i princip som retriveCarName()
 function removeItem() {
+    let i = 0;
     let id = document.getElementById('removeId').value;
-    console.log(id);
     if (id === null || id === "") {
         showCar.style.color = "red";
         showCar.innerHTML = "Please enter a valid car id";
     }
     else {
-        if (id != undefined || id != null) {
-            for (let i = 0; i < localStorage.length; i++) {
-                carId = localStorage.key(i);
-                carValues = localStorage.getItem(carId);
-                carObjekt = JSON.parse(carValues)
-                if (id === carId && confirm(`Are your sure? That will remove ${carObjekt.brand} with id ${id} from localStorage.`)) {
+        if (id != undefined) {
+            Object.keys(localStorage).forEach(function (key) {
+                carId = localStorage.getItem(key);
+                carObjekt = JSON.parse(carId); // här görs stringen om tillbaka till objekt
+                console.log(carObjekt)
+                if (id === key && confirm(`Are your sure? That will remove ${carObjekt.brandName} with id ${id} from localStorage.`)) {
+                    showCar.innerText = `${carObjekt.brand} deleted`;
                     localStorage.removeItem(id);
-                    showCar.innerText = `${carObjekt.brand} deleted`
                     document.getElementById('removeId').value = "";
                 }
-                else {
+            
+                else if(key !== undefined) {
                     showCar.style.color = "red";
                     showCar.innerText = "No such car id exists, please search for a cars id investigate. "
                 }
-            }
+            });
+        }
+        else {
+            showCar.style.color = "red";
+            showCar.innerText = "No such car id exists. "
         }
     }
 }
