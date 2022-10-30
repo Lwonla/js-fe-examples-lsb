@@ -72,7 +72,7 @@ fetch(urlOnePost, {
 
 
 // Till sist: ett litet mer realistiskt exempel med en array innehållande två objekt, samt felhantering med .catch()
-const cars = [
+const cars = [ //en arraay med två objekt
   {
     model: "Peugeot",
     color: "blue",
@@ -97,4 +97,4 @@ fetch(urlAllPosts, {
 })
   .then(response => response.text())
   .then(result => { console.log(result); })
-  .catch(err => { console.error(err.message); });
+  .catch(err => { console.error(err.message); }); //här tas ett fel emot ifall det infräffar
