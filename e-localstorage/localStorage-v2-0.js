@@ -1,15 +1,18 @@
+// localStorage sparar i värdeparet key/value enligt localStorage("key", "value")
 
 let id = 0;
 let showCarObjects = document.getElementById('showCars');
 let showCar = document.getElementById('showCar');
 
+// store(): color har lagts till och ett meddelande när något sparats
+// funktionen sparar i värdeparet "key = unik siffra": "value = json-file med tre objekt"
 function store() {
-    let brand = document.getElementById('carBrand').value;
+    let brandName = document.getElementById('carBrand').value;
     let price = document.getElementById('carPrice').value;
     let color = document.getElementById('color').value;
 
     const car = {
-        brand: brand,
+        brandName: brandName,
         price: price,
         color: color,
     }
@@ -18,6 +21,8 @@ function store() {
     showCarObjects.innerHTML = this.brand + " is stored.";
 }
 
+// showListOfItem(): efterfrågad funktion för att visa en lista med 
+// sparade objekt, annars visas ett meddelande om att localStorage är tomt
 function showListOfItem() {
     let carId;
     showCarObjects.innerText = "";
@@ -37,17 +42,26 @@ function showListOfItem() {
     }
 }
 
+// closeList(): "Tömmer" visning av lista
 function closeList() {
     showCarObjects.innerHTML = "";
 }
 
+// retriveCarName(): em funktion för att kunna söka på bilars märkesnamn.
+// Eftersom store() sparar en json file som value, måste den göras om tillbaka till
+// objekt, annars kan inte hitta värdet (value) som ligger i carBrandName.
+// Den yttre if-satsen handlar om att ta hand om när användaren klickar på knappen
+// utan att ha skrivit in något värde i rutan.
+// for-loopen går igenom själva listan. Om ett namn hittas tar if-sats hand om det och skriver ut det,
+// och skulle listan inte ha det som söks efter tar else if hand om det (carMatchingCount räknar
+// när listan är färdigloopad och är 0 om inget namn hittats)
 function retriveCarName() {
-    let brandName = document.getElementById('retrieveKey').value;
+    let carBrandName = document.getElementById('retrieveKey').value;
     let carId, carValues;
     let carMatchingCount = 0;
     let carObjekt;
     
-    if (brandName === null || brandName === "") {
+    if (carBrandName === null || carBrandName === "") {
         showCar.style.color = "red";
         showCar.innerHTML = "Please enter a car brand name";
     }
@@ -56,9 +70,9 @@ function retriveCarName() {
         for (let i = 0; i < localStorage.length; i++) {
             carId = localStorage.key(i);
             carValues = localStorage.getItem(carId);
-            carObjekt = JSON.parse(carValues)
+            carObjekt = JSON.parse(carValues); // här görs stringen om tillbaka till objekt
             
-            if (carObjekt.brand === brandName) {
+            if (carObjekt.brand === carBrandName) {
                 let p = document.createElement('p');
                 let car = document.createTextNode(carObjekt.brand + " has the key: " + carId);
                 p.appendChild(car);
@@ -77,6 +91,7 @@ function retriveCarName() {
 
 }
 
+// removeItem(): fungerar i princip som retriveCarName()
 function removeItem() {
     let id = document.getElementById('removeId').value;
     console.log(id);
@@ -104,6 +119,7 @@ function removeItem() {
     }
 }
 
+// clearStorage() frågar, som säkerhet, om användaren verkligen vill rensa localStorage
 function clearStorage() {
     if (confirm("Are your sure? That will delete all items in localStorage.")) {
         localStorage.clear();
@@ -112,6 +128,7 @@ function clearStorage() {
     }
 }
 
+// samling av händelsehanterare (events) för sidans knappar
 window.onload = function () {
     document.getElementById('carForm').onsubmit = store;
     document.getElementById('showCarList').onclick = showListOfItem;
