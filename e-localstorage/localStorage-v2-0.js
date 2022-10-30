@@ -4,7 +4,7 @@ let showCarObjects = document.getElementById('showCars');
 let showCar = document.getElementById('showCar');
 
 // store(): color har lagts till och ett meddelande när något sparats
-// funktionen sparar i värdeparet "key = unik siffra": "value = json-file med tre objekt"
+// funktionen sparar i värdeparet "key = unikt id": "value = json-file med tre objekt"
 function store() {
     let brandName = document.getElementById('carBrand').value;
     let price = document.getElementById('carPrice').value;
@@ -19,6 +19,8 @@ function store() {
     localStorage.setItem(uniqueId(), JSON.stringify(car));
 }
 
+//uniqueId(): det fungerade inte att ha ett vanligt uppräknande siffror,
+// det saknades då ett id-nummer när en post togs bort.
 function uniqueId(){
     const id = Math.random().toString(36).substr(2, 9);
     return id;
