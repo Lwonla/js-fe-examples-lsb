@@ -1,10 +1,11 @@
 /*  Exmplet använder https://jsonplaceholder.typicode.com/ 
    
     Uddatering v. 2.0
-    Ett tillagt exempel: en JSON-array med två objekt, från rad 78
+    Ett tillagt exempel: en JSON-array med två objekt
 */
 
 // först: att hämta (GET) en post, och visa med console.log()
+
 const urlOnePost = "https://jsonplaceholder.typicode.com/posts/1";
 const urlAllPosts = "https://jsonplaceholder.typicode.com/posts";
 
@@ -27,6 +28,8 @@ let data3 = fetch(urlAllPosts)
       console.log(element)
     });
   });
+
+
 
 // att skicka en liten post som sparas (fejksparas) på servern
 fetch(urlAllPosts, {
@@ -101,3 +104,4 @@ fetch(urlAllPosts, {
   .then(response => response.text())
   .then(result => { console.log(result); })
   .catch(err => { console.error(err.message); }); //här tas ett fel emot ifall det infräffar
+

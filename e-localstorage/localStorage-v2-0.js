@@ -62,7 +62,7 @@ function closeList() {
 function retriveCarName() {
     let carBrandName = document.getElementById('retrieveKey').value;
     let carId;
-    let carMatchingCount, i = 0;
+    let carMatchingCount = 0;
     let carObjekt;
 
     if (carBrandName === null || carBrandName === "") {
@@ -91,7 +91,6 @@ function retriveCarName() {
 
 // removeItem(): fungerar i princip som retriveCarName()
 function removeItem() {
-    let i = 0;
     let id = document.getElementById('removeId').value;
     if (id === null || id === "") {
         showCar.style.color = "red";
